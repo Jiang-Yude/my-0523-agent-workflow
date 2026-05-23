@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>輪播咪卡｜Codex 社群輪播卡工作流教學案例</title>
+  <title>AI 圖文設計工作坊｜完整教案</title>
+  <meta name="description" content="從品牌風格到角色定妝、從專案模式到 Agent 工作流的完整 AI 圖文設計工作坊教案。">
   <style>
     :root {
       --bg: #f5ede0;
@@ -40,9 +41,9 @@
       color: var(--ink);
       font-family: var(--sans);
       line-height: 1.72;
-      letter-spacing: 0;
     }
     a { color: inherit; text-decoration: none; }
+
     .topbar {
       position: sticky;
       top: 0;
@@ -113,9 +114,9 @@
     .hero {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 72px 22px 44px;
+      padding: 64px 22px 40px;
       display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+      grid-template-columns: minmax(0, 1.18fr) minmax(340px, 0.82fr);
       gap: 38px;
       align-items: center;
     }
@@ -135,13 +136,14 @@
       margin: 0;
       color: var(--ink-strong);
       line-height: 1.22;
-      letter-spacing: 0;
     }
     h1 {
       margin-top: 18px;
       font-family: var(--serif);
-      font-size: clamp(40px, 5.2vw, 72px);
+      font-size: clamp(34px, 4.2vw, 54px);
+      line-height: 1.18;
       max-width: 860px;
+      white-space: nowrap;
     }
     .lead {
       margin: 22px 0 0;
@@ -153,206 +155,123 @@
       margin-top: 28px;
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
     .pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 14px;
+      padding: 9px 14px;
       border-radius: 999px;
       border: 1px solid var(--line);
       background: rgba(253, 250, 245, 0.72);
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 600;
     }
-    .hero-panel {
+    .pill.accent {
+      background: rgba(184, 115, 51, 0.10);
+      color: var(--coffee);
+      border-color: rgba(184, 115, 51, 0.32);
+    }
+
+    /* Album */
+    .album {
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 22px;
       padding: 18px;
       box-shadow: var(--shadow);
-    }
-    .preview-frame {
       display: grid;
-      grid-template-columns: 0.78fr 1fr;
       gap: 14px;
-      align-items: stretch;
     }
-    .preview-img {
-      min-height: 380px;
-      border-radius: 14px;
-      background: #efe4d4;
-      overflow: hidden;
-      border: 1px solid rgba(61,43,31,0.10);
-    }
-    .preview-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .preview-notes {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .preview-summary {
-      padding: 14px;
-      border: 1px solid rgba(184,115,51,0.20);
-      border-radius: 14px;
-      background: #fffdf8;
-      color: var(--coffee);
-      font-size: 14px;
-      line-height: 1.65;
-    }
-    .mini-flow {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .flow-node {
-      position: relative;
-      min-height: 72px;
-      padding: 10px 10px 9px;
-      border-radius: 12px;
-      border: 1px solid rgba(184,115,51,0.22);
-      background: linear-gradient(180deg, #fffdf8, #fbf1e6);
-    }
-    .flow-node::after {
-      content: "→";
-      position: absolute;
-      right: -10px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--accent);
-      font-weight: 900;
-      font-size: 15px;
-      z-index: 2;
-    }
-    .flow-node:nth-child(3)::after,
-    .flow-node:last-child::after {
-      display: none;
-    }
-    .flow-node:nth-child(4) {
-      grid-column: 3;
-      grid-row: 2;
-    }
-    .flow-node:nth-child(4)::after {
-      content: "←";
-      left: -10px;
-      right: auto;
-    }
-    .flow-node:nth-child(5) {
-      grid-column: 2;
-      grid-row: 2;
-    }
-    .flow-node:nth-child(5)::after {
-      content: "←";
-      left: -10px;
-      right: auto;
-    }
-    .flow-node:nth-child(6) {
-      grid-column: 1;
-      grid-row: 2;
-    }
-    .flow-step {
-      display: inline-flex;
-      width: 22px;
-      height: 22px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 7px;
-      background: var(--accent);
-      color: #fffaf2;
-      font-family: var(--serif);
-      font-size: 13px;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-    .flow-node b {
-      display: block;
-      color: var(--ink-strong);
-      font-size: 13px;
-      line-height: 1.3;
-    }
-    .flow-node span {
-      display: block;
-      margin-top: 2px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.35;
-    }
-    .thumb-block {
-      padding: 14px;
-      border: 1px solid rgba(184,115,51,0.20);
-      border-radius: 14px;
-      background: #fffdf8;
-    }
-    .thumb-title {
+    .album-header {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
       gap: 10px;
-      margin-bottom: 10px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
     }
-    .thumb-title b {
+    .album-header b {
       color: var(--accent);
       font-family: var(--serif);
-      font-size: 26px;
-      line-height: 1;
+      font-size: 22px;
     }
-    .thumb-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+    .album-header span { color: var(--muted); font-size: 13px; font-weight: 700; }
+    .album-hint {
+      display: inline-flex;
+      align-items: center;
       gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
     }
-    .thumb {
-      aspect-ratio: 4 / 5;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid rgba(61,43,31,0.10);
-      background: #efe4d4;
-    }
-    .thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .wide-thumb {
-      aspect-ratio: 16 / 9;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid rgba(61,43,31,0.10);
-      background: #efe4d4;
-    }
-    .wide-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .stat {
-      padding: 14px;
-      border: 1px solid rgba(184,115,51,0.20);
-      border-radius: 14px;
+    .album-hint kbd {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 5px;
+      border: 1px solid rgba(61,43,31,0.18);
       background: #fffdf8;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-strong);
     }
-    .stat b {
+    .album-featured {
+      aspect-ratio: 4 / 5;
+      max-height: 450px;
+      width: 80%;
+      margin: 0 auto;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(61,43,31,0.10);
+      background: #efe4d4;
+      cursor: zoom-in;
+      position: relative;
+      padding: 0;
+    }
+    .album-featured img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
-      font-size: 28px;
-      line-height: 1;
-      color: var(--accent);
-      font-family: var(--serif);
-      margin-bottom: 6px;
     }
-    .stat span { color: var(--muted); font-size: 13px; }
+    .album-featured::after {
+      content: "點圖放大";
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(43,29,21,0.82);
+      color: #fff8f0;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .album-thumbs {
+      display: grid;
+      grid-template-columns: repeat(9, minmax(0, 1fr));
+      gap: 5px;
+      width: 80%;
+      margin: 0 auto;
+    }
+    .album-thumb {
+      aspect-ratio: 4 / 5;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(61,43,31,0.10);
+      background: #efe4d4;
+      cursor: zoom-in;
+      padding: 0;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .album-thumb:hover { transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+    .album-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .album-thumb.wide { aspect-ratio: 4 / 5; grid-column: auto; }
 
     main { padding-bottom: 72px; }
     section {
@@ -379,14 +298,24 @@
       font-size: 13px;
       color: var(--accent);
       font-weight: 800;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
     }
+    .evidence {
+      border-left: 3px solid var(--accent-2);
+      padding: 10px 12px;
+      border-radius: 0 10px 10px 0;
+      background: #fffdf8;
+      color: var(--coffee);
+      font-size: 14px;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
-    .card, .step, .artifact, .dialogue {
+    .card, .stage-card, .step, .artifact, .dialogue {
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -398,9 +327,195 @@
       margin-bottom: 10px;
     }
     .card p { margin: 0; color: var(--muted); }
-    .card ul, .step ul { margin: 12px 0 0; padding-left: 20px; color: var(--coffee); }
-    .card li, .step li { margin: 6px 0; }
 
+    /* Stage cards (三階段教學主線) */
+    .stages {
+      display: grid;
+      gap: 18px;
+    }
+    .stage-card {
+      padding: 26px;
+      display: grid;
+      gap: 18px;
+    }
+    .stage-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .stage-num {
+      width: 62px;
+      height: 62px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fffaf2;
+      display: grid;
+      place-items: center;
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .stage-title h3 {
+      font-size: 24px;
+      font-family: var(--serif);
+    }
+    .stage-title .stage-kicker {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+    .stage-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 20px;
+    }
+    .stage-body.with-image {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+    .stage-lead {
+      font-size: 17px;
+      color: var(--coffee);
+      margin: 0 0 14px;
+      line-height: 1.6;
+    }
+    .check-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .check-list li {
+      padding: 10px 14px;
+      border-left: 4px solid var(--green);
+      background: rgba(105, 123, 77, 0.08);
+      border-radius: 0 8px 8px 0;
+      color: var(--ink-strong);
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .stage-image {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(61,43,31,0.10);
+      background: #efe4d4;
+      cursor: zoom-in;
+      position: relative;
+      align-self: start;
+    }
+    .stage-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .stage-image::after {
+      content: "點圖放大";
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(43,29,21,0.82);
+      color: #fff8f0;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .stage-image figcaption {
+      padding: 8px 12px;
+      background: #fffdf8;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .flow-mini {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .flow-mini-step {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fffdf8;
+    }
+    .flow-mini-step b {
+      color: var(--accent);
+      font-family: var(--serif);
+      font-size: 18px;
+    }
+    .flow-mini-step span {
+      color: var(--ink-strong);
+      font-size: 14.5px;
+      font-weight: 600;
+    }
+
+    /* Prompt box */
+    .prompt-box {
+      margin-top: 4px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fffdf8;
+      overflow: hidden;
+    }
+    .prompt-box summary {
+      cursor: pointer;
+      padding: 14px 18px;
+      list-style: none;
+      color: var(--ink-strong);
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .prompt-box summary::-webkit-details-marker { display: none; }
+    .prompt-box summary::after {
+      content: "+";
+      color: var(--accent);
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 800;
+      transition: transform .2s ease;
+    }
+    .prompt-box[open] summary::after { transform: rotate(45deg); }
+    .prompt-box pre {
+      margin: 0;
+      padding: 18px 20px;
+      border-top: 1px dashed var(--line);
+      background: rgba(242, 228, 206, 0.32);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 14.5px;
+      line-height: 1.72;
+      white-space: pre-wrap;
+    }
+    .copy-row {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 18px 16px;
+      background: rgba(242, 228, 206, 0.32);
+    }
+    .copy-button {
+      border: 0;
+      border-radius: 999px;
+      padding: 8px 18px;
+      background: var(--ink-strong);
+      color: #fff8f0;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .copy-button:hover { background: var(--coffee); }
+
+    /* Process map (六步驟) */
     .process-map {
       position: relative;
       display: grid;
@@ -468,79 +583,6 @@
       line-height: 1.45;
     }
 
-    .workflow {
-      display: grid;
-      gap: 14px;
-    }
-    .step {
-      display: grid;
-      grid-template-columns: 82px minmax(0, 1fr) minmax(240px, 0.42fr);
-      gap: 18px;
-      padding: 18px;
-      align-items: start;
-    }
-    .step-num {
-      width: 62px;
-      height: 62px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #fffaf2;
-      display: grid;
-      place-items: center;
-      font-family: var(--serif);
-      font-size: 28px;
-      font-weight: 800;
-    }
-    .step h3 { font-size: 21px; }
-    .step p { margin: 8px 0 0; color: var(--muted); }
-    .evidence {
-      border-left: 3px solid var(--accent-2);
-      padding: 10px 12px;
-      border-radius: 0 10px 10px 0;
-      background: #fffdf8;
-      color: var(--coffee);
-      font-size: 14px;
-    }
-    .quote {
-      font-family: var(--serif);
-      font-size: 19px;
-      color: var(--ink-strong);
-    }
-    .mono {
-      font-family: var(--mono);
-      font-size: 13px;
-      background: rgba(61,43,31,0.06);
-      border: 1px solid rgba(61,43,31,0.10);
-      padding: 2px 6px;
-      border-radius: 6px;
-      word-break: break-word;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(330px, 0.55fr);
-      gap: 18px;
-    }
-    .artifact {
-      padding: 18px;
-      display: grid;
-      gap: 14px;
-    }
-    .artifact-row {
-      display: grid;
-      grid-template-columns: 132px minmax(0, 1fr);
-      gap: 14px;
-      padding: 14px 0;
-      border-top: 1px solid var(--line);
-    }
-    .artifact-row:first-child { border-top: 0; padding-top: 0; }
-    .artifact-label {
-      font-weight: 800;
-      color: var(--accent);
-      font-size: 14px;
-    }
-    .artifact-value { color: var(--coffee); word-break: break-word; }
-
     .correction {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -568,47 +610,21 @@
     .fix h3 { font-size: 20px; margin-bottom: 8px; }
     .fix p { margin: 0; color: var(--muted); }
 
-    .dialogue-log {
+    .takeaway {
       display: grid;
-      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
     }
-    .dialogue {
-      display: grid;
-      grid-template-columns: 140px minmax(0, 1fr);
-      gap: 14px;
-      padding: 16px;
-    }
-    .speaker {
-      font-weight: 800;
-      color: var(--accent);
-    }
-    .dialogue p { margin: 0; color: var(--coffee); }
-    .dialogue small { display: block; margin-top: 8px; color: var(--muted); }
-
-    .teaching {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-    .teach-card {
-      padding: 18px;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background: #fffdf8;
-    }
-    .teach-card h3 { font-size: 18px; margin-bottom: 8px; }
-    .teach-card p { margin: 0; color: var(--muted); font-size: 15px; }
 
     .callout {
-      padding: 26px;
+      padding: 28px;
       border-radius: 22px;
       background: linear-gradient(135deg, #5b3a28, #2f2018);
       color: #fff8f0;
       box-shadow: var(--shadow);
     }
     .callout h2 { color: #fff8f0; font-family: var(--serif); font-size: clamp(28px, 3vw, 42px); }
-    .callout p { margin: 12px 0 0; color: rgba(255,248,240,0.82); }
-    .callout .mono { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.16); color: #fff; }
+    .callout p { margin: 12px 0 0; color: rgba(255,248,240,0.84); font-size: 17px; }
 
     footer {
       max-width: var(--max);
@@ -618,15 +634,90 @@
       font-size: 14px;
     }
 
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(20, 14, 8, 0.92);
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-panel {
+      width: min(1100px, 100%);
+      max-height: 92vh;
+      display: grid;
+      gap: 14px;
+      position: relative;
+    }
+    .lightbox-img-wrap {
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+    .lightbox img {
+      max-width: 100%;
+      max-height: 78vh;
+      object-fit: contain;
+      border: 2px solid rgba(212, 165, 116, 0.6);
+      border-radius: 10px;
+      background: var(--panel);
+      box-shadow: 0 28px 80px rgba(0,0,0,.5);
+    }
+    .lightbox-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: #fff8f0;
+    }
+    .lightbox-title { margin: 0; font-size: 15px; font-weight: 700; opacity: 0.92; }
+    .lightbox-counter { font-size: 13px; opacity: 0.7; font-family: var(--mono); }
+    .lightbox-btn {
+      border: 1px solid rgba(255,248,240,0.32);
+      background: rgba(255,248,240,0.08);
+      color: #fff8f0;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .lightbox-btn:hover { background: rgba(255,248,240,0.18); }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,248,240,0.32);
+      background: rgba(20,14,8,0.6);
+      color: #fff8f0;
+      font-size: 24px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+    .lightbox-nav:hover { background: rgba(255,248,240,0.18); }
+    .lightbox-nav.prev { left: -64px; }
+    .lightbox-nav.next { right: -64px; }
+    @media (max-width: 1200px) {
+      .lightbox-nav.prev { left: 8px; }
+      .lightbox-nav.next { right: 8px; }
+    }
+
     @media (max-width: 920px) {
-      .hero, .section-head, .split { grid-template-columns: 1fr; }
-      .grid, .teaching, .correction { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero, .section-head { grid-template-columns: 1fr; }
+      .grid, .takeaway, .correction { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .process-map { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .process-map::before { display: none; }
       .process-item:nth-child(3)::after { display: none; }
-      .step { grid-template-columns: 64px minmax(0, 1fr); }
-      .step .evidence { grid-column: 2; }
-      .preview-frame { grid-template-columns: 1fr 1fr; }
+      .stage-body { grid-template-columns: 1fr; }
+      .stage-body.with-image { grid-template-columns: 1fr; }
     }
     @media (max-width: 820px) {
       .topbar .inner { flex-wrap: wrap; padding: 8px 14px; gap: 8px; }
@@ -655,25 +746,15 @@
       }
     }
     @media (max-width: 660px) {
-      .hero { padding-top: 46px; }
-      .grid, .teaching, .correction, .preview-frame { grid-template-columns: 1fr; }
+      .hero { padding-top: 40px; }
+      .grid, .takeaway, .correction { grid-template-columns: 1fr; }
       .process-map { grid-template-columns: 1fr; padding: 12px; }
       .process-item { min-height: auto; display: grid; grid-template-columns: 42px 1fr; gap: 0 10px; align-items: start; }
       .process-index { grid-row: span 2; margin-bottom: 0; }
-      .process-item::after {
-        content: "↓";
-        right: auto;
-        left: 27px;
-        top: auto;
-        bottom: -15px;
-      }
+      .process-item::after { content: "↓"; right: auto; left: 27px; top: auto; bottom: -15px; }
       .process-item:nth-child(3)::after { display: block; }
-      .preview-img { min-height: 440px; }
-      .dialogue { grid-template-columns: 1fr; }
-      .artifact-row { grid-template-columns: 1fr; gap: 4px; }
-      .step { grid-template-columns: 1fr; }
-      .step .evidence { grid-column: auto; }
-      .step-num { width: 54px; height: 54px; border-radius: 14px; }
+      .album-thumbs { grid-template-columns: repeat(9, minmax(0, 1fr)); width: 100%; gap: 4px; }
+      .album-featured { width: 100%; }
     }
   </style>
 </head>
@@ -682,110 +763,249 @@
     <div class="inner">
       <a class="brand" href="#top" aria-label="回到開頭">
         <span class="mark">咪</span>
-        <span>輪播咪卡 · Codex 工作流教學案例</span>
+        <span>AI 圖文設計工作坊 · 完整教案</span>
       </a>
       <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <nav>
-        <a href="#case">案例定位</a>
-        <a href="#workflow">工作流</a>
-        <a href="#dialogue">對話紀錄</a>
+        <a href="#positioning">教案定位</a>
+        <a href="#mainline">教學主線</a>
+        <a href="#advanced">進階案例</a>
         <a href="#fixes">修正紀錄</a>
-        <a href="#teach">5/23 教學</a>
+        <a href="#takeaway">帶走的資產</a>
       </nav>
     </div>
   </header>
 
   <div id="top" class="hero">
     <div>
-      <span class="eyebrow">2026-05-11 · Codex 實作紀錄 · 0523 講師備課案例</span>
-      <h1>我是如何用 Codex 搭建社群輪播卡工作流</h1>
+      <span class="eyebrow">日期：規劃中 · 暫定實體工作坊用</span>
+      <h1>AI 圖文設計工作坊<br>完整教案</h1>
       <p class="lead">
-        這是一份保留完整脈絡的教學案例：從一篇「Markdown 與 HTML 分工」脆文開始，
-        做出咪卡輪播卡、建立技能包、上發文看板，再把操作經驗提煉成可重複使用的規則。
+        從品牌風格、角色定妝、專案模式三階段教學主線，
+        到「輪播咪卡 Codex 工作流」的實作案例。
+        一份保留完整脈絡、可直接拿來現場使用的教案。
       </p>
       <div class="hero-actions">
-        <span class="pill">觸發詞：輪播咪卡</span>
-        <span class="pill">工具：Codex + image generation</span>
-        <span class="pill">產物：貼文、圖卡、技能包、看板</span>
-        <span class="pill">課程主卡：05/23 講師的 Agent 工作流</span>
+        <span class="pill accent">主軸：手機 + AI 圖文設計</span>
+        <span class="pill">工具：ChatGPT / Codex / image generation</span>
+        <span class="pill">產物：品牌資產、輪播卡、技能包、看板</span>
+        <span class="pill">適用：講師備課、實體工作坊</span>
       </div>
     </div>
-    <aside class="hero-panel" aria-label="本次產物預覽">
-      <div class="preview-frame">
-        <div class="preview-img">
-          <img src="assets/card01.jpg" alt="Markdown 與 HTML 工作流分工輪播封面">
-        </div>
-        <div class="preview-notes">
-          <div class="preview-summary">
-            <strong>同一件事，不是單點任務，而是一條可重複的工作流。</strong>
-            <div class="mini-flow" aria-label="輪播咪卡工作流流程圖">
-              <div class="flow-node">
-                <i class="flow-step">1</i>
-                <b>文案整理</b>
-                <span>保留口氣，搭配咪卡形象拆卡</span>
-              </div>
-              <div class="flow-node">
-                <i class="flow-step">2</i>
-                <b>視覺生成</b>
-                <span>咪卡角色一致，逐張生成</span>
-              </div>
-              <div class="flow-node">
-                <i class="flow-step">3</i>
-                <b>檔案管理</b>
-                <span>命名、歸檔、建立貼文檔</span>
-              </div>
-              <div class="flow-node">
-                <i class="flow-step">4</i>
-                <b>圖片縮檔</b>
-                <span>轉 JPG，控管檔案大小</span>
-              </div>
-              <div class="flow-node">
-                <i class="flow-step">5</i>
-                <b>看板更新</b>
-                <span>只放圖片01作預覽</span>
-              </div>
-              <div class="flow-node">
-                <i class="flow-step">6</i>
-                <b>技能包沉澱</b>
-                <span>把修正寫回下次流程</span>
-              </div>
-            </div>
-          </div>
-          <div class="thumb-block">
-            <div class="thumb-title"><span><b>7</b> 張直式輪播卡</span><span>其餘 6 張</span></div>
-            <div class="thumb-grid" aria-label="其餘六張直式輪播卡縮圖">
-              <div class="thumb"><img src="assets/card02.jpg" alt="輪播卡第 2 張縮圖"></div>
-              <div class="thumb"><img src="assets/card03.jpg" alt="輪播卡第 3 張縮圖"></div>
-              <div class="thumb"><img src="assets/card04.jpg" alt="輪播卡第 4 張縮圖"></div>
-              <div class="thumb"><img src="assets/card05.jpg" alt="輪播卡第 5 張縮圖"></div>
-              <div class="thumb"><img src="assets/card06.jpg" alt="輪播卡第 6 張縮圖"></div>
-              <div class="thumb"><img src="assets/card07.jpg" alt="輪播卡第 7 張縮圖"></div>
-            </div>
-          </div>
-          <div class="thumb-block">
-            <div class="thumb-title"><span><b>1</b> 張橫式一頁總結</span><span>16:9</span></div>
-            <div class="wide-thumb">
-              <img src="assets/summary.jpg" alt="橫式一頁總結縮圖">
-            </div>
-          </div>
-          <div class="stat"><b>2</b><span>份技能包：主知識庫 + Codex</span></div>
-          <div class="stat"><b>3</b><span>次流程校準：JPG、看板驗收、技能包同步</span></div>
-        </div>
+    <aside class="album" aria-label="工作坊產物相簿">
+      <div class="album-header">
+        <span><b>10</b> 張產物範例</span>
+        <span class="album-hint">點任一張 · 用 <kbd>←</kbd> <kbd>→</kbd> 切換</span>
+      </div>
+      <button class="album-featured" type="button" data-index="0" aria-label="放大封面圖">
+        <img src="assets/card01.jpg" alt="輪播咪卡封面：Markdown 與 HTML 工作流分工">
+      </button>
+      <div class="album-thumbs" id="albumThumbs">
+        <button class="album-thumb" type="button" data-index="1"><img src="assets/card02.jpg" alt="輪播卡第 2 張"></button>
+        <button class="album-thumb" type="button" data-index="2"><img src="assets/card03.jpg" alt="輪播卡第 3 張"></button>
+        <button class="album-thumb" type="button" data-index="3"><img src="assets/card04.jpg" alt="輪播卡第 4 張"></button>
+        <button class="album-thumb" type="button" data-index="4"><img src="assets/card05.jpg" alt="輪播卡第 5 張"></button>
+        <button class="album-thumb" type="button" data-index="5"><img src="assets/card06.jpg" alt="輪播卡第 6 張"></button>
+        <button class="album-thumb" type="button" data-index="6"><img src="assets/card07.jpg" alt="輪播卡第 7 張"></button>
+        <button class="album-thumb wide" type="button" data-index="7"><img src="assets/summary.jpg" alt="橫式一頁總結"></button>
+        <button class="album-thumb" type="button" data-index="8"><img src="assets/workshop-cover.png" alt="工作坊封面範例"></button>
+        <button class="album-thumb" type="button" data-index="9"><img src="assets/mika-three-view.jpg" alt="咪卡三視圖定妝照"></button>
       </div>
     </aside>
   </div>
 
   <main>
-    <section id="case">
+    <section id="positioning">
       <div class="section-head">
         <div>
-          <div class="section-kicker">Case Positioning</div>
-          <h2>這不是生圖紀錄，是一條 Agent 工作流</h2>
-          <p>同一件事情拆成六個節點，才會從一次性產出變成下次可重複執行的流程。</p>
+          <div class="section-kicker">Positioning</div>
+          <h2>這份教案在教什麼</h2>
+          <p>不只教「怎麼叫 AI 生圖」，而是教「怎麼把生圖變成可重複的品牌資產」。</p>
         </div>
-        <div class="evidence">教學重點：老師不只學會叫 AI 生圖，而是把自己的素材生產流程變成可重複執行的規則。</div>
+        <div class="evidence">教學主張：一張照片只能用一次；一套品牌資產，可以讓每次新品上架都少重來一次。</div>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>給誰學</h3>
+          <p>在地商家、小品牌、長輩學員，以及想把素材生產流程穩定下來的講師。</p>
+        </article>
+        <article class="card">
+          <h3>學什麼</h3>
+          <p>三階段教學主線（品牌風格 / 三視圖 / 專案模式），加上一個完整 Agent 工作流實作案例。</p>
+        </article>
+        <article class="card">
+          <h3>帶走什麼</h3>
+          <p>品牌風格檔、角色定妝圖、ChatGPT 專案模式設定，外加一條「文案到看板」的可重複流程。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="mainline">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Teaching Mainline</div>
+          <h2>教學主線：三階段</h2>
+          <p>先定風格，再定角色，最後把資料放進專案模式，讓 AI 以後穩定照你的品牌出圖。</p>
+        </div>
+      </div>
+
+      <div class="stages">
+        <!-- Stage 1 -->
+        <article class="stage-card" id="stage-1">
+          <div class="stage-head">
+            <div class="stage-num">1</div>
+            <div class="stage-title">
+              <div class="stage-kicker">STAGE 01</div>
+              <h3>品牌風格檔</h3>
+            </div>
+          </div>
+          <div class="stage-body">
+            <div>
+              <p class="stage-lead">不要一開始就叫 AI 生圖。先請它判斷：你是誰、給誰看、這張圖要說什麼。</p>
+              <ul class="check-list">
+                <li>整理你的視覺風格與配色偏好</li>
+                <li>整理你喜歡的版型與排版節奏</li>
+                <li>確認受眾的審美偏好</li>
+                <li>先給三組方向，選完再生圖</li>
+              </ul>
+            </div>
+            <details class="prompt-box">
+              <summary>可直接複製的品牌風格檔指令</summary>
+              <pre data-copy-text>我等等要做一張圖（海報／社群圖卡）
+我不想跟大家撞風格，所以先別急著生圖。
+
+請依下面流程做：
+
+1. 從你能取得的脈絡推導
+（這次對話、我貼的文章、你的記憶裡關於我的東西）
+先判斷出這四件事：
+- 我的視覺風格跟配色偏好
+- 我喜歡的版型
+- 我的受眾是誰，大概是什麼樣的人
+- 這次圖要傳達的主題跟核心訊息
+
+2. 上網查一下這群受眾的審美偏好
+把查到的重點告訴我
+
+3. 上面有不確定的、或推不出來的部分
+再回頭跟我確認
+
+4. 整合完，給我三組設計方向
+每一組包含：文字內容、配色、版型
+
+5. 我選一組之後，你再開始生圖</pre>
+              <div class="copy-row"><button class="copy-button" type="button">複製指令</button></div>
+            </details>
+          </div>
+        </article>
+
+        <!-- Stage 2 -->
+        <article class="stage-card" id="stage-2">
+          <div class="stage-head">
+            <div class="stage-num">2</div>
+            <div class="stage-title">
+              <div class="stage-kicker">STAGE 02</div>
+              <h3>三視圖定妝照</h3>
+            </div>
+          </div>
+          <div class="stage-body with-image">
+            <div>
+              <p class="stage-lead">AI 生出心中神圖時，先不要繼續亂試。立刻把這張圖變成角色基準圖。</p>
+              <div class="flow-mini">
+                <div class="flow-mini-step"><b>01</b><span>抽到 SSR，就立刻停下來</span></div>
+                <div class="flow-mini-step"><b>02</b><span>請 AI 依照剛剛那張圖補三視圖</span></div>
+                <div class="flow-mini-step"><b>03</b><span>三視圖沒問題，再補表情與動作參考</span></div>
+              </div>
+              <details class="prompt-box" style="margin-top: 14px;">
+                <summary>三視圖定妝照講解與指令</summary>
+                <pre data-copy-text>ChatGPT 生圖一直不穩定？
+尤其是角色不一致怎麼辦？
+
+教你用「三視圖」來幫角色做定妝照。
+
+步驟一：抽到 SSR 就立刻停
+當終於出現心中神圖的時候，
+就把這張當作角色基準圖。
+
+步驟二：立刻補三視圖
+在同一個對話裡，
+馬上請 AI 依照剛剛那張圖，
+生出正面、側面、背面的「三視圖」，
+把角色的特徵固定下來。
+
+直接下指令：
+「我要這個角色的三視圖」
+
+如果三視圖沒問題，
+可以順手再補幾張動作表情參考。
+這些都會變成你的角色素材庫。</pre>
+                <div class="copy-row"><button class="copy-button" type="button">複製指令</button></div>
+              </details>
+            </div>
+            <figure class="stage-image" data-index="9">
+              <img src="assets/mika-three-view.jpg" alt="咪卡角色定妝照四視圖與帽子角度參考">
+              <figcaption>範例：咪卡角色定妝照，把角色特徵固定下來</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <!-- Stage 3 -->
+        <article class="stage-card" id="stage-3">
+          <div class="stage-head">
+            <div class="stage-num">3</div>
+            <div class="stage-title">
+              <div class="stage-kicker">STAGE 03</div>
+              <h3>專案模式穩定出圖</h3>
+            </div>
+          </div>
+          <div class="stage-body">
+            <div>
+              <p class="stage-lead">把品牌資料放進 ChatGPT 專案資料夾。免費版也有專案模式可以用，之後每次做圖都優先沿用同一套風格。</p>
+              <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                <div class="card" style="padding: 16px;">
+                  <h3 style="font-size: 16px;">品牌資料</h3>
+                  <p style="font-size: 14px;">品牌定位、語氣、受眾、商品特色、常用文案。</p>
+                </div>
+                <div class="card" style="padding: 16px;">
+                  <h3 style="font-size: 16px;">視覺資料</h3>
+                  <p style="font-size: 14px;">配色與色碼、Logo、形象照、圖卡範例、封面範例。</p>
+                </div>
+                <div class="card" style="padding: 16px;">
+                  <h3 style="font-size: 16px;">規則資料</h3>
+                  <p style="font-size: 14px;">角色定稿圖、排版規則、禁用風格、不要再犯的錯。</p>
+                </div>
+              </div>
+            </div>
+            <details class="prompt-box">
+              <summary>專案設定裡可以貼上的文字</summary>
+              <pre data-copy-text>請優先參考這個專案資料來源裡的品牌資料。
+
+請沿用既有：
+- 配色
+- 排版
+- 角色形象
+- 文案語氣
+- 商品照片風格
+
+如果資料不足，請先回頭問我。
+不要直接生出跟品牌風格不一致的圖。</pre>
+              <div class="copy-row"><button class="copy-button" type="button">複製指令</button></div>
+            </details>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="advanced">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Advanced Case</div>
+          <h2>進階案例：輪播咪卡 Codex 工作流</h2>
+          <p>把三階段教學連到一條完整 Agent 工作流，從一篇脆文做出輪播卡、貼文檔、看板、技能包。</p>
+        </div>
+        <div class="evidence">教學重點：不只學會叫 AI 生圖，而是把自己的素材生產流程變成可重複執行的規則。</div>
       </div>
       <div class="process-map" aria-label="社群輪播卡工作流流程圖">
         <article class="process-item">
@@ -796,7 +1016,7 @@
         <article class="process-item">
           <span class="process-index">02</span>
           <h3>視覺生成</h3>
-          <p>套用咪卡角色設定，生成直式輪播與橫式總結。<br><a href="https://www.threads.com/@jiang_yude_coach/post/DXqhyMwide1?xmt=AQG0YllmaSjzXrh9V1wTXXfYW9k36YkX5x8uX7vfoFiIBQ" target="_blank" rel="noopener noreferrer">延伸閱讀：咪卡形象與指定動作示範</a></p>
+          <p>套用咪卡角色設定，生成直式輪播與橫式總結。</p>
         </article>
         <article class="process-item">
           <span class="process-index">03</span>
@@ -811,12 +1031,12 @@
         <article class="process-item">
           <span class="process-index">05</span>
           <h3>看板更新</h3>
-          <p>把看板當成一眼驗收的工作紀錄：AI 依指定格式貼上首頁 01 與連結，就代表整條流程已跑完；格式不對就是警訊。</p>
+          <p>看板當一眼驗收用：只放圖片01 加文件連結，格式對就代表流程跑完。</p>
         </article>
         <article class="process-item">
           <span class="process-index">06</span>
           <h3>技能包沉澱</h3>
-          <p>把踩雷、修正與規則寫回技能包，讓下次直接觸發。</p>
+          <p>把踩雷、修正與規則寫回技能包，下次直接觸發。</p>
         </article>
       </div>
       <div class="grid">
@@ -830,145 +1050,7 @@
         </article>
         <article class="card">
           <h3>終點：沉澱成技能包</h3>
-          <p>把角色規格、圖卡版型、看板規則、縮檔策略寫成 <span class="mono">mika-carousel-card</span>。</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="workflow">
-      <div class="section-head">
-        <div>
-          <div class="section-kicker">Workflow</div>
-          <h2>從對話到可重複執行的流程</h2>
-          <p>每一步都不是單次操作，而是可被下次沿用的規則。</p>
-        </div>
-      </div>
-      <div class="workflow">
-        <article class="step">
-          <div class="step-num">1</div>
-          <div>
-            <h3>確認概念與貼文主張</h3>
-            <p>先確認「Markdown vs HTML」不是格式鄙視鏈，而是工作流分配。</p>
-            <ul>
-              <li>AI ↔ 我：Markdown</li>
-              <li>我 ↔ 其他人：HTML</li>
-              <li>PDF 因靜態與高雜訊，不是這個流程的主要輸出</li>
-            </ul>
-          </div>
-          <div class="evidence quote">「主要不是格式誰比較香，而是工作流的差異。」</div>
-        </article>
-
-        <article class="step">
-          <div class="step-num">2</div>
-          <div>
-            <h3>拆成輪播卡腳本</h3>
-            <p>保留使用者原本開頭與口氣，再搭配咪卡形象設定與每張指定動作，把後段整理成能被圖卡承載的結構。</p>
-            <ul>
-              <li>封面：HTML 比 Markdown 香？</li>
-              <li>年份變化：2024/2025 Markdown，2026 HTML 變多</li>
-              <li>核心分工圖：AI ↔ 我 / 我 ↔ 其他人</li>
-              <li>每張卡指定咪卡要做什麼：看文件、指向流程、對照格式、操作部署</li>
-              <li>Markdown、HTML、PDF、GitHub Pages 分段說明</li>
-            </ul>
-          </div>
-          <div class="evidence">這一步把「社群短文」轉成「文字腳本 + 角色動作腳本」。咪卡形象設定本身可再獨立成另一篇教學。</div>
-        </article>
-
-        <article class="step">
-          <div class="step-num">3</div>
-          <div>
-            <h3>用咪卡形象照逐張生成</h3>
-            <p>每張圖卡都使用咪卡定稿照作為角色參考，確保黑貓、金色眼睛、帽子與知識助理氣質一致。</p>
-            <ul>
-              <li>第 1 張：咪卡固定右下角</li>
-              <li>第 2 張：不要右下角</li>
-              <li>每張都要與文字或圖表互動</li>
-            </ul>
-          </div>
-          <div class="evidence">這一步示範「角色定妝照」如何變成長期素材生產的穩定基礎。</div>
-        </article>
-
-        <article class="step">
-          <div class="step-num">4</div>
-          <div>
-            <h3>整理正式貼文資料夾</h3>
-            <p>Codex 把生成圖整理到正式 Threads 貼文資料夾，建立 Markdown 貼文檔並嵌入所有圖卡。</p>
-            <ul>
-              <li>資料夾：<span class="mono">2026-05-11-1400 Markdown 跟 HTML 工作流分工</span></li>
-              <li>文章檔含 frontmatter、正式貼文、圖卡區、橫式總結區</li>
-              <li>看板排程到 2026-05-11 14:00</li>
-            </ul>
-          </div>
-          <div class="evidence">Agent 的價值在生成後的整理、命名、放對位置與連動。</div>
-        </article>
-
-        <article class="step">
-          <div class="step-num">5</div>
-          <div>
-            <h3>獨立成「輪播咪卡」技能包</h3>
-            <p>把這次的做法拆成四份 reference 和一支縮檔腳本，主知識庫與 Codex 各放一份。</p>
-            <ul>
-              <li><span class="mono">mika-character-lock.md</span>：角色與帽子硬規則</li>
-              <li><span class="mono">carousel-workflow.md</span>：輪播版型</li>
-              <li><span class="mono">posting-board-rules.md</span>：發文看板規則</li>
-              <li><span class="mono">image-compression-rules.md</span>：JPG 縮檔規則</li>
-            </ul>
-          </div>
-          <div class="evidence quote">「技能包不是提示詞收藏，是一套可以被反覆執行的工作流程。」</div>
-        </article>
-      </div>
-    </section>
-
-    <section id="dialogue">
-      <div class="section-head">
-        <div>
-          <div class="section-kicker">Dialogue Record</div>
-          <h2>對話紀錄如何推動規則長出來</h2>
-          <p>這裡保留的是教學用脈絡，而不是逐字稿。每一段都對應一個流程決策。</p>
-        </div>
-      </div>
-      <div class="dialogue-log">
-        <article class="dialogue">
-          <div class="speaker">使用者</div>
-          <div>
-            <p>先確認「Markdown 跟 HTML 的差異，我覺得是工作流的分配」這個概念是否合理。</p>
-            <small>結果：確立主張，不把開頭改掉，保留「最近有大神在推 HTML 比 Markdown 香」作為社群語境。</small>
-          </div>
-        </article>
-        <article class="dialogue">
-          <div class="speaker">Codex</div>
-          <div>
-            <p>整理貼文後段，設計 7 張咪卡輪播卡腳本，並建立生成指令檔。</p>
-            <small>結果：從文案變成卡片腳本，形成初版社群圖卡流程。</small>
-          </div>
-        </article>
-        <article class="dialogue">
-          <div class="speaker">使用者</div>
-          <div>
-            <p>「先幫我生第一張」「依此類推 生完」。</p>
-            <small>結果：逐張生成 7 張直式圖卡，後續再補 1 張橫式總結。</small>
-          </div>
-        </article>
-        <article class="dialogue">
-          <div class="speaker">使用者</div>
-          <div>
-            <p>提供正式貼文，要求上發文看板並整理圖片，排程時間是今天 14:00。</p>
-            <small>結果：建立正式文章檔，圖卡歸檔，更新發文看板。</small>
-          </div>
-        </article>
-        <article class="dialogue">
-          <div class="speaker">使用者</div>
-          <div>
-            <p>提醒圖片大小：直式要 300KB 內，橫式一頁總結 500KB 內。</p>
-            <small>結果：第一次錯用 PNG 量化，後續改成 JPG 縮檔並寫回技能包。</small>
-          </div>
-        </article>
-        <article class="dialogue">
-          <div class="speaker">使用者</div>
-          <div>
-            <p>指出發文看板不是素材堆疊區，而是一眼檢查 AI 有沒有完成指定流程的工作紀錄。</p>
-            <small>結果：修正 09:00 與 14:00 看板卡片，技能包補上「看板只放圖片01 + 文件連結」作為驗收格式。</small>
-          </div>
+          <p>把角色規格、圖卡版型、看板規則、縮檔策略寫成可重用的 mika-carousel-card 技能包。</p>
         </article>
       </div>
     </section>
@@ -977,7 +1059,7 @@
       <div class="section-head">
         <div>
           <div class="section-kicker">Iteration Log</div>
-          <h2>修正紀錄是技能包迭代的一部分</h2>
+          <h2>修正紀錄：踩過的雷</h2>
           <p>重點不是錯誤本身，而是把操作過程有意識地提煉成可重複使用的規則。</p>
         </div>
       </div>
@@ -985,7 +1067,7 @@
         <article class="fix bad">
           <span class="tag">錯誤 1</span>
           <h3>PNG 強壓導致畫質變差</h3>
-          <p>原本為了維持 PNG，把直式圖卡壓到 300KB 以內，結果需要大量色彩量化，畫面變得像單色圖。</p>
+          <p>原本為了維持 PNG 格式，把直式圖卡壓到 300KB 以內，結果需要大量色彩量化，畫面變得像單色圖。</p>
         </article>
         <article class="fix good">
           <span class="tag">修正 1</span>
@@ -1000,83 +1082,27 @@
         <article class="fix good">
           <span class="tag">修正 2</span>
           <h3>看板成為一眼驗收機制</h3>
-          <p>看板只保留 <span class="mono">圖片01.jpg</span> 當示意圖，並連回文章檔。只要格式正確，就能快速判斷生成、歸檔、縮檔與文件整理已完成。</p>
+          <p>看板只保留圖片01 當示意圖，並連回文章檔。格式正確就能快速判斷生成、歸檔、縮檔與文件整理是否完成。</p>
         </article>
       </div>
     </section>
 
-    <section id="artifacts">
+    <section id="takeaway">
       <div class="section-head">
         <div>
-          <div class="section-kicker">Artifacts</div>
-          <h2>本次留下的可重用資產</h2>
-          <p>每個產物都能回到下一次工作流裡繼續使用。</p>
+          <div class="section-kicker">Takeaway</div>
+          <h2>學員帶走的不是一張圖</h2>
+          <p>是一套品牌資產，可以讓你之後每次新品上架都少重來一次。</p>
         </div>
       </div>
-      <div class="split">
-        <div class="artifact">
-          <div class="artifact-row">
-            <div class="artifact-label">正式貼文</div>
-            <div class="artifact-value">03 我的文章 AI 應用 與 知識管理/Threads 脆/2026-05-11-1400 Markdown 跟 HTML 工作流分工/</div>
-          </div>
-          <div class="artifact-row">
-            <div class="artifact-label">圖卡輸出</div>
-            <div class="artifact-value">7 張 JPG 直式輪播圖；1 張 JPG 橫式總結圖。</div>
-          </div>
-          <div class="artifact-row">
-            <div class="artifact-label">發文看板</div>
-            <div class="artifact-value">00 工作台/📝 發文看板.md，只嵌首頁 01 預覽。</div>
-          </div>
-          <div class="artifact-row">
-            <div class="artifact-label">工作日記</div>
-            <div class="artifact-value">2026-05-11-0933 課程產品·工作日記：輪播咪卡技能包完成與5月23日教學案例。</div>
-          </div>
-        </div>
-        <div class="artifact">
-          <div class="artifact-row">
-            <div class="artifact-label">主知識庫技能包</div>
-            <div class="artifact-value">_agent/skills/mika-carousel-card/</div>
-          </div>
-          <div class="artifact-row">
-            <div class="artifact-label">Codex 技能包</div>
-            <div class="artifact-value">/Users/jiangyude2/.codex/skills/mika-carousel-card/</div>
-          </div>
-          <div class="artifact-row">
-            <div class="artifact-label">觸發詞</div>
-            <div class="artifact-value"><span class="mono">輪播咪卡</span></div>
-          </div>
-          <div class="artifact-row">
-            <div class="artifact-label">縮檔腳本</div>
-            <div class="artifact-value">scripts/compress-mika-jpg.py</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="teach">
-      <div class="section-head">
-        <div>
-          <div class="section-kicker">Teaching Use</div>
-          <h2>5/23 可以怎麼教老師用 Agent</h2>
-          <p>這個案例適合示範「老師如何把自己的教學風格與素材生產線封裝起來」。</p>
-        </div>
-      </div>
-      <div class="teaching">
-        <article class="teach-card">
-          <h3>1. 先有形象設定</h3>
-          <p>角色不是每次重畫，而是先有定妝照、帽子規則、氣質規則。</p>
+      <div class="takeaway">
+        <article class="card">
+          <h3>現場完成</h3>
+          <p>商品原圖、AI 背景延伸圖、品牌風格檔初稿、一張角色定妝圖。</p>
         </article>
-        <article class="teach-card">
-          <h3>2. 把版型寫成規則</h3>
-          <p>第一張、第二張、橫式總結、文字密度、互動方式都要明確。</p>
-        </article>
-        <article class="teach-card">
-          <h3>3. 用 Codex 執行整條流程</h3>
-          <p>生成、命名、歸檔、寫文章檔、更新看板，不只是生圖。</p>
-        </article>
-        <article class="teach-card">
-          <h3>4. 把經驗提煉成資產</h3>
-          <p>技能包給 AI 用，操作手冊讓自己重跑，教學手冊讓大家學會。</p>
+        <article class="card">
+          <h3>回家繼續用</h3>
+          <p>把品牌資料放進專案模式，之後做海報、圖卡、商品照都能延續同一套風格。</p>
         </article>
       </div>
     </section>
@@ -1085,20 +1111,36 @@
       <div class="callout">
         <h2>一句話總結</h2>
         <p>
-          這個案例不是「AI 幫我做圖」，而是「我把自己的隱性知識提煉出來，變成 AI 可用的技能包、自己可重跑的操作手冊，以及可以教給別人的教學案例」。
-        </p>
-        <p>
-          外來延伸應用可以再接 Manus 做自動發文排程或多平台發布；這裡先作為延伸方向，不放進主流程。
+          這份教案不是「AI 幫我做圖」，而是「我把自己的隱性知識提煉出來，
+          變成 AI 可用的技能包、自己可重跑的操作手冊，
+          以及可以教給別人的教學案例」。
         </p>
       </div>
     </section>
   </main>
 
   <footer>
-    本頁為 5/23 教學示範用內部頁面。設計方向採花書高保真資訊頁思路；內容來源為 2026-05-11 Codex 對話與本機產物。
+    本頁為實體工作坊備課用內部頁面。日期暫定，待確定後更新。內容整合自 2026-05-11 Codex 對話、輪播咪卡技能包與手機 AI 商品照課程教材。
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="imageLightbox" aria-hidden="true">
+    <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="圖片放大檢視">
+      <div class="lightbox-img-wrap">
+        <button class="lightbox-nav prev" type="button" id="lightboxPrev" aria-label="上一張">‹</button>
+        <img id="lightboxImage" src="" alt="">
+        <button class="lightbox-nav next" type="button" id="lightboxNext" aria-label="下一張">›</button>
+      </div>
+      <div class="lightbox-bar">
+        <p class="lightbox-title" id="lightboxTitle">圖片放大檢視</p>
+        <span class="lightbox-counter" id="lightboxCounter">1 / 10</span>
+        <button class="lightbox-btn" type="button" id="lightboxClose">關閉 ESC</button>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Nav toggle
     const navToggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('nav');
     if (navToggle && nav) {
@@ -1115,6 +1157,93 @@
         });
       });
     }
+
+    // Copy buttons
+    document.querySelectorAll('.copy-button').forEach((button) => {
+      button.addEventListener('click', async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const block = button.closest('details').querySelector('[data-copy-text]');
+        const text = block.innerText.trim();
+        try {
+          await navigator.clipboard.writeText(text);
+          const original = button.textContent;
+          button.textContent = '已複製';
+          setTimeout(() => { button.textContent = original; }, 1400);
+        } catch (error) {
+          button.textContent = '請手動選取';
+        }
+      });
+    });
+
+    // Lightbox album
+    const albumItems = [
+      { src: 'assets/card01.jpg', alt: '輪播咪卡封面：Markdown 與 HTML 工作流分工', title: '輪播卡 01 · 封面' },
+      { src: 'assets/card02.jpg', alt: '輪播卡第 2 張', title: '輪播卡 02' },
+      { src: 'assets/card03.jpg', alt: '輪播卡第 3 張', title: '輪播卡 03' },
+      { src: 'assets/card04.jpg', alt: '輪播卡第 4 張', title: '輪播卡 04' },
+      { src: 'assets/card05.jpg', alt: '輪播卡第 5 張', title: '輪播卡 05' },
+      { src: 'assets/card06.jpg', alt: '輪播卡第 6 張', title: '輪播卡 06' },
+      { src: 'assets/card07.jpg', alt: '輪播卡第 7 張', title: '輪播卡 07' },
+      { src: 'assets/summary.jpg', alt: '橫式一頁總結', title: '一頁總結 · 16:9 橫式' },
+      { src: 'assets/workshop-cover.png', alt: '工作坊封面範例', title: '工作坊封面範例' },
+      { src: 'assets/mika-three-view.jpg', alt: '咪卡角色三視圖定妝照', title: '咪卡角色定妝照（三視圖）' }
+    ];
+
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    let currentIndex = 0;
+
+    function renderLightbox(i) {
+      const item = albumItems[i];
+      if (!item) return;
+      lightboxImage.src = item.src;
+      lightboxImage.alt = item.alt;
+      lightboxTitle.textContent = item.title;
+      lightboxCounter.textContent = (i + 1) + ' / ' + albumItems.length;
+      currentIndex = i;
+    }
+
+    function openLightbox(i) {
+      renderLightbox(i);
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+      document.body.style.overflow = '';
+    }
+    function nextItem() { renderLightbox((currentIndex + 1) % albumItems.length); }
+    function prevItem() { renderLightbox((currentIndex - 1 + albumItems.length) % albumItems.length); }
+
+    document.querySelectorAll('[data-index]').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const idx = parseInt(el.getAttribute('data-index'), 10);
+        if (!isNaN(idx)) openLightbox(idx);
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxNext.addEventListener('click', nextItem);
+    lightboxPrev.addEventListener('click', prevItem);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowRight') nextItem();
+      else if (e.key === 'ArrowLeft') prevItem();
+    });
   </script>
 </body>
 </html>
